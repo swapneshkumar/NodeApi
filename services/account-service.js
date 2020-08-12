@@ -1,21 +1,24 @@
 require('dotenv/config');
 const mongoose = require('mongoose');
 const Account = require('../model/account/registerModel');
+const Login=require('../model/account/loginModel');
 var userAccount = {};
 userAccount.registerUser = async function (userData) {
-    console.log(mongoose.connection.readyState);
     var rsData;
     try {
         const account = new Account(userData);
-        console.log(account)
         rsData = await account.save();
     } catch (error) {
-        console.log("error", rsData);
         rsData = error;
     }
-
-    console.log("completd", rsData);
     return rsData;
+}
+
+userAccount.login=async(userData)=>{
+    //const login=Login(userData);
+   const rs= await Login.find(userData,['userId','firstName','lastName','_id']);
+   return rs;
+    
 }
 
 module.exports = userAccount;

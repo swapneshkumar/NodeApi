@@ -17,8 +17,6 @@ const connectDB = async () => {
     mongoose.connect(process.env.CONNECTION_STRING, { dbName: 'student', useUnifiedTopology: true, useNewUrlParser: true }, (error) => {
         if (error)
             console.log(error);
-        console.log('DB COnnected!');
-        console.log(mongoose.connection.readyState);
     });
 
 }
