@@ -18,8 +18,8 @@ route.post('/register', async (req, resp, next) => {
 route.post('/login', async (req, res, next) => {
     const userData = req.body;
     const curruntUser = await registerService.login(userData);
-    console.log(curruntUser);
-    if(curruntUser){
+    console.log('fetched data => ',curruntUser.length);
+    if(curruntUser && curruntUser.length>0){
         const token= await toeknutil.getToken(curruntUser);
        return res.status(200).json({"token":token});
     }  

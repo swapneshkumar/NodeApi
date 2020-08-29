@@ -16,7 +16,9 @@ userAccount.registerUser = async function (userData) {
 
 userAccount.login=async(userData)=>{
     //const login=Login(userData);
+    console.log(userData);
    const rs= await Login.find(userData,['userId','firstName','lastName','_id']);
+   console.log(rs);
    return rs;
     
 }
